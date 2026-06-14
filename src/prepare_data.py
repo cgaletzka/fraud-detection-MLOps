@@ -14,7 +14,8 @@ def clean_data(df):
                  "Days:Policy-Claim",
                  "WitnessPresent",
                  "BasePolicy",
-                 "VehicleCategory"] 
+                 "VehicleCategory",
+                 "RepNumber"] 
     df = df.drop(drop_vars, axis=1)
 
     # group labels together
@@ -128,6 +129,13 @@ def clean_data(df):
                "1996": 3}
     
     df["Year"] = df["Year"].map(mapping)
+
+    mapping = {"none": 1,
+               "1": 2,
+               "2 to 4": 3,
+               "more than 4": 4}
+    
+    df["PastNumberOfClaims"] = df["PastNumberOfClaims"].map(mapping)
 
     # drop rows with missing values
     df = df.dropna()
