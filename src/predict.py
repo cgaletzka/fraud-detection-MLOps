@@ -1,10 +1,6 @@
-import joblib
 import mlflow
 from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score
-from utils import load_data, load_config, encode_vars, split_data
-
-def load_model(path):
-    return joblib.load(path)
+from utils import load_data, load_config, load_model, encode_vars, split_data
 
 def predict_fraud(X_test, y_test, model, config):
     mlflow.set_experiment(config['mlflow']['experiment_name'])
@@ -19,7 +15,6 @@ def predict_fraud(X_test, y_test, model, config):
         mlflow.log_metric("f1", f1_score(y_test, y_pred))
         mlflow.log_metric("roc_auc", roc_auc_score(y_test, y_proba_fraud))
         mlflow.log_param("threshold", threshold)
-
     return 
 
 if __name__ == "__main__":

@@ -61,6 +61,7 @@ def clean_data(df):
     group_labels = ("under 6 months",
                     "1 year")
     df["AddressChange-Claim"] = df["AddressChange-Claim"].replace(group_labels, "6 months to 1 year")
+    df = df.rename(columns={"AddressChange-Claim": "AddressChange_Claim"})
 
     ## NumberOfCars
     group_labels = ("3 to 4",
@@ -113,7 +114,7 @@ def clean_data(df):
                "2 to 3 years": 3,
                "4 to 8 years": 4}
     
-    df["AddressChange-Claim"] = df["AddressChange-Claim"].map(mapping)
+    df["AddressChange_Claim"] = df["AddressChange_Claim"].map(mapping)
 
     mapping = {"1 vehicle": 1,
                "2 vehicles": 2,

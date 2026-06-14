@@ -14,10 +14,10 @@ model:
       random_state: 42
       class_weight: "balanced"
     param_grid:
-      n_estimators: [50, 75]
-      max_depth: [5, 8, 12]
-      min_samples_split: [2, 4]
-      min_samples_leaf: [1, 10, 28]
+      n_estimators: [50]
+      max_depth: [8, 12, 15]
+      min_samples_split: [2]
+      min_samples_leaf: [5, 10]
 
 mlflow:
   experiment_name: "fraud_detection"

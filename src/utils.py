@@ -1,5 +1,6 @@
 import pandas as pd
 import yaml
+import joblib
 from sklearn.model_selection import train_test_split
 
 def load_data(path):
@@ -9,6 +10,9 @@ def load_config(path):
     with open(path, "r") as stream:
         config = yaml.safe_load(stream)
     return config
+
+def load_model(path):
+    return joblib.load(path)
 
 def encode_vars(df, config):
     return pd.get_dummies(df, columns=config['data']['cat'], drop_first=True)

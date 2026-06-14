@@ -1,4 +1,4 @@
-Month,WeekOfMonth,DayOfWeek,Make,AccidentArea,DayOfWeekClaimed,MonthClaimed,WeekOfMonthClaimed,Sex,MaritalStatus,Age,Fault,PolicyType,VehiclePrice,DriverRating,PastNumberOfClaims,AgeOfVehicle,PoliceReportFiled,AgentType,NumberOfSuppliments,AddressChange-Claim,NumberOfCars,Year,FraudFound
+Month,WeekOfMonth,DayOfWeek,Make,AccidentArea,DayOfWeekClaimed,MonthClaimed,WeekOfMonthClaimed,Sex,MaritalStatus,Age,Fault,PolicyType,VehiclePrice,DriverRating,PastNumberOfClaims,AgeOfVehicle,PoliceReportFiled,AgentType,NumberOfSuppliments,AddressChange_Claim,NumberOfCars,Year,FraudFound
 Dec,5,Wednesday,Honda,1,Tuesday,Jan,1,1,Single,21,1,Other,5,1,1,2,0,0,1,2,3,1,0
 Jan,3,Wednesday,Honda,1,Monday,Jan,4,0,Single,34,1,Sport - Collision,5,4,1,4,1,0,1,1,1,1,0
 Oct,5,Friday,Honda,1,Thursday,Nov,2,0,Married,47,1,Sport - Collision,5,3,2,5,0,0,1,1,1,1,0

@@ -23,12 +23,15 @@ def run_grid_search(X_train, y_train, config):
     return grid
 
 if __name__ == "__main__":
-
     df = load_data("data/processed/carclaims_processed.csv")
     config = load_config("config.yaml")
     df_enc = encode_vars(df, config)
+    
     X_train, X_test, y_train, y_test = split_data(df_enc, config)
+    joblib.dump(list(X_train.columns), "models/feature_columns.pkl") # save feature column for API later
+    
     rf_grid = run_grid_search(X_train, y_train, config)
+    joblib.dump(rf_grid.best_estimator_, "models/rf_model.pkl")
     
     print("Best parameters:", rf_grid.best_params_)
     print("Best recall:", rf_grid.cv_results_['mean_test_recall'][rf_grid.best_index_])
@@ -36,4 +39,4 @@ if __name__ == "__main__":
     print("Best F1-macro:", rf_grid.cv_results_['mean_test_f1_macro'][rf_grid.best_index_])
     print("Best ROC-AUC:", rf_grid.cv_results_['mean_test_roc_auc'][rf_grid.best_index_])
 
-    joblib.dump(rf_grid.best_estimator_, "models/rf_model.pkl")
+    
