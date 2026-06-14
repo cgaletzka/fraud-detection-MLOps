@@ -1,27 +1,10 @@
-import yaml
 import joblib
 import mlflow
 import numpy as np
-import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, KFold, GridSearchCV
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-
-def load_data(path):
-    return pd.read_csv(path)
-
-def load_config(path):
-    with open(path, "r") as stream:
-        config = yaml.safe_load(stream)
-    return config
-
-def encode_vars(df, config):
-    return pd.get_dummies(df, columns=config['data']['cat'], drop_first=True)
-
-def split_data(df, config):
-    y = df[config['data']['y']]
-    X = df.drop(columns=[config['data']['y']])  
-    return train_test_split(X, y, test_size=config['split']['test_size'], random_state=config['split']['random_state'])
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import precision_score, recall_score, f1_score
+from utils import load_data, load_config, encode_vars, split_data
 
 def run_grid_search(X_train, y_train, config):
     mlflow.set_experiment(config['mlflow']['experiment_name'])
@@ -40,6 +23,7 @@ def run_grid_search(X_train, y_train, config):
     return grid
 
 if __name__ == "__main__":
+
     df = load_data("data/processed/carclaims_processed.csv")
     config = load_config("config.yaml")
     df_enc = encode_vars(df, config)
