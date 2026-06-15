@@ -36,7 +36,6 @@ class Claim(BaseModel):
     NumberOfCars: int
     Year: int
 
-
 feature_columns = load_model("models/feature_columns.pkl")
 
 # predict new data
