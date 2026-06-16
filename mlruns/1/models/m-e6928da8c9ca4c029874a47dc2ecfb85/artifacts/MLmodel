@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/cedri/mlops-project/mlruns/1/models/m-e6928da8c9ca4c029874a47dc2ecfb85/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.2
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.13.0
+model_id: m-e6928da8c9ca4c029874a47dc2ecfb85
+model_size_bytes: 338293
+model_uuid: m-e6928da8c9ca4c029874a47dc2ecfb85
+prompts: null
+run_id: 3282b0b0c02c4035b2d83d15aac10820
+utc_time_created: '2026-06-16 00:09:14.490767'

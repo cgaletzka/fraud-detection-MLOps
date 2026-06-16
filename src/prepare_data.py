@@ -1,14 +1,15 @@
 import numpy as np
-from utils import load_data
 
 def clean_data(df):
+
+    df.columns = df.columns.str.replace("[:-]", "_", regex=True)
     
     # drop variables
     drop_vars = ["PolicyNumber",
                  "AgeOfPolicyHolder",
                  "Deductible",
-                 "Days:Policy-Accident",
-                 "Days:Policy-Claim",
+                 "Days_Policy_Accident",
+                 "Days_Policy_Claim",
                  "WitnessPresent",
                  "BasePolicy",
                  "VehicleCategory",
@@ -60,8 +61,7 @@ def clean_data(df):
     ## AddressChange-Claim
     group_labels = ("under 6 months",
                     "1 year")
-    df["AddressChange-Claim"] = df["AddressChange-Claim"].replace(group_labels, "6 months to 1 year")
-    df = df.rename(columns={"AddressChange-Claim": "AddressChange_Claim"})
+    df["AddressChange_Claim"] = df["AddressChange_Claim"].replace(group_labels, "6 months to 1 year")
 
     ## NumberOfCars
     group_labels = ("3 to 4",
@@ -82,7 +82,9 @@ def clean_data(df):
     df["Fault"] = df["Fault"].map({"Third Party": 0, "Policy Holder": 1})
     df["PoliceReportFiled"] = df["PoliceReportFiled"].map({"No": 0, "Yes": 1})
     df["AgentType"] = df["AgentType"].map({"External": 0, "Internal": 1})
-    df["FraudFound"] = df["FraudFound"].map({"No": 0, "Yes": 1})
+
+    if 'FraudFound' in df.columns:
+        df["FraudFound"] = df["FraudFound"].map({"No": 0, "Yes": 1})
 
     # encode ordinal variables
     mapping = {"none": 1,
@@ -142,11 +144,3 @@ def clean_data(df):
     df["AgeOfVehicle"] = df["AgeOfVehicle"].astype(int)
 
     return df
-
-def save_data(df, path):
-    df.to_csv(path, index=False)
-
-if __name__ == "__main__":
-    df = load_data("data/raw/carclaims.csv")
-    df = clean_data(df)
-    save_data(df, "data/processed/carclaims_processed.csv")
