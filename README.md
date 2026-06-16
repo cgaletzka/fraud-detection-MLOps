@@ -5,6 +5,7 @@
 - Ran an exploratory data analysis including parameter optimization using optuna
 - Created a pipeline for training a random forest classifier with mlflow
 - Included API support using fastAPI and pydantic
+- Included a web interface for easy predictions
 
 ## To-do:
 
