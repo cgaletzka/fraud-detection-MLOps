@@ -98,7 +98,7 @@ demo = gr.Interface(
     ],
     outputs=gr.Text(label="Prediction"),
     title="Insurance Fraud Detection",
-    description="Fill in the claim details to get a fraud probability prediction."
+    description="Fill in the details to get a prediction for the fraud probability."
 )
 
 # we'll build the interface next
