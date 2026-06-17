@@ -6,12 +6,11 @@ __pycache__/
 .venv/
 mlruns/
 mlruns\1
-data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
+data/raw/
+data/processed
 *.pyc
 .env
+mlflow.db
 
 # C extensions
 *.so
