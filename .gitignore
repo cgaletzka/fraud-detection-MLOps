@@ -6,8 +6,10 @@ __pycache__/
 .venv/
 mlruns/
 mlruns\1
-data/raw/
-data/processed
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
 *.pyc
 .env
 

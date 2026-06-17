@@ -6,7 +6,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import recall_score, precision_score, f1_score, roc_auc_score, precision_recall_curve
+from sklearn.metrics import recall_score, precision_score, f1_score, roc_auc_score, precision_recall_curve, roc_curve, auc
 
 def train_model(df, config):
     
@@ -77,6 +77,24 @@ def train_model(df, config):
         mlflow.log_artifact("reports/precision_recall_curve.png")
 
         print("Model training finished. Precision: ", test_scores['test_precision'], "Recall: ", test_scores['test_recall'])
+
+        # plot ROC-curve
+        fpr, tpr, thresholds = roc_curve(y_test, y_pred_proba) 
+        roc_auc = auc(fpr, tpr)
+       
+        # Plot the ROC curve
+        plt.figure()  
+        plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
+        plt.plot([0, 1], [0, 1], 'k--', label='No Skill')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('ROC Curve')
+        plt.legend()
+        plt.show()
+        plt.savefig("reports/roc_curve.png")
+        mlflow.log_artifact("reports/roc_curve.png")
     
     joblib.dump(pipeline, "models/rf_pipeline.pkl")
     
