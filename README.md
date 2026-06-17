@@ -9,7 +9,7 @@
 
 ## Data:
 
-- The data comes from an open insurance fraud dataset which can be downloaded from here: https://github.com/Rashmi-77/Vehicle-Insurance-Fraud-Detection
+- The data comes from an open insurance fraud dataset which can be downloaded from here: https://github.com/Rashmi-77/Vehicle-Insurance-Fraud-Detection. Simply add the dataset in folder in the repository in data/raw tor run the pipeline.
 
 ## Approach
 
