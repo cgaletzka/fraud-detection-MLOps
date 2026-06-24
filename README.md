@@ -3,13 +3,13 @@
 ## What I did:
 
 - Ran an exploratory data analysis including parameter optimization using optuna
-- Created a pipeline for training a random forest classifier with mlflow
+- Created a pipeline for training a random forest classifier with mlflow using the best parameters
 - Included API support using fastAPI and pydantic
-- Included a web interface for easy predictions with gradio (https://b6b642f532ddb359bd.gradio.live/)
+- Included a web interface for easy predictions with gradio
 
-## Data:
+## Data and usage:
 
-- The data comes from an open insurance fraud dataset which can be downloaded from here: https://github.com/Rashmi-77/Vehicle-Insurance-Fraud-Detection. Simply add the dataset in folder in the repository in data/raw to run the pipeline.
+- The data comes from an open insurance fraud dataset which can be downloaded from here: https://github.com/Rashmi-77/Vehicle-Insurance-Fraud-Detection. Simply drop the dataset into data/raw and either run the eda in notebooks/eda or the pipeline via src/run_pipeline.
 
 ## Approach
 
