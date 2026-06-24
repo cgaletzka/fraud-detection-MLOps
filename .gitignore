@@ -6,11 +6,15 @@ __pycache__/
 .venv/
 mlruns/
 mlruns\1
-data/raw/
-data/processed
 *.pyc
 .env
 mlflow.db
+
+# ignore the gitignore files but don't transfer the data
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
 
 # C extensions
 *.so
